@@ -143,5 +143,49 @@ This document will detail the content of material to be delivered **in order**.
   - Paraphrase the text
   - Explain that Adam combines momentum and RMSprop
   - Commentate on the GIFs
+  - Notice that Adam is not displayed in the GIFs, but state that it is faster than AdaDelta
+
+
+### Hyperparameter Search
+
+
+- Paraphrase the text
+- General Idea
+  - basically something similar to the hyperparameter evolution game in topic 3
+- Grid Search
+  - Searches through all combinations of Learning Rate, L2, and Dropout
+  - Step through the code slowly, explaining the loop in particular
+  - Not very efficient
+  - Make sure students understand in every deep learning problem, each hyperparameter will effect the outcome to a certain degree. Maybe for one problem changing learning rate has a huge effect in improving the model and L2 doesn't have much effect.
+  - Explain the diagram. The histograms show the relative effectiveness of each parameter. Note how gridsearch only searched through 3 different L2 and Learning rate values.
+- Random Search
+  - Step through the code slowly, explaining the loop in particular
+  - trying many more values of each hyperparameter, thus covering a wider range of hyperparameters
+  - Explain the image, note that we also used 9 combinations of learning rate and L2, but this time we are trying out 9 different learning rates and 9 L2.
+  - Note that some values landed on the peaks.
   - 
 
+## Programming Exercise -- mnist_v2.ipynb
+- ***Please open this in Google Colab***
+### Preprocessing Data
+- The first part (loading the data) is taken from the previous topic, thus the code is already there
+- Data Generator
+  - Write code for this section, commentating on your code.
+  - Refer to the comments to understand what each part is about
+### Neural Network
+- Defining Our Model
+  - Same general design as before, however we are going to add batch norm and dropout
+  - Write the `fit()` function as well, however note that the tensorboard portions are written already
+- Test Train
+  - Write the test train section just to make sure our model runs
+
+### Hyperparameter Search
+- Most of Hyperparameter Search is already written
+- Change the portions within the box, as well as wherever the comments say could be changed.
+- If you are testing multiple models, **make sure you delete the model, optimizer and cost function (see comments at the bottom of the cell, inside the for loop). If you don't delete it, it will accumulate and fill up the VRAM**.
+- After running hyperparmeter search, you can display the `hparams` dataframe and that will list your models as well as the hyperparameters you tried, in order of validation accuracy
+- You can also load up tensorboard to compare cost graphs
+- Everything else is the same as topic 4.
+
+### Optional
+- save the model, then run `lock.py`. This program is identical to the one found in topic 4.
